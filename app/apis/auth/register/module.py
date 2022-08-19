@@ -1,14 +1,14 @@
-""" Define el modulo de la API register """
+""" Define el modulo de la API Register """
 from requests import Session
-from app.apis.auth.register.flow import RegisterFlow
-from app.apis.auth.register.input import RegisterInput
-from app.apis.auth.register.validator import RegisterValidator
-from libraries.classes.module.module_api import ModuleAPI
+from .flow import RegisterFlow
+from .validator import RegisterValidator
+from .input import RegisterInput
+from libraries.api_manager.module.module_api import ModuleAPI
 
 class RegisterModule(ModuleAPI):
-    """ Clase que controla a los componentes de la API Register """
+    """ Clase que controla los componentes de la API Register """
 
-    def __init__(self, request: RegisterInput, db: Session):
+    def __init__(self, request, db):
         """ Constructor de la clase """
         super().__init__()
         self.validator_api = RegisterValidator(request)

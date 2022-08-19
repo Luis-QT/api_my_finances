@@ -1,20 +1,23 @@
-""" Define las clases de entrada de la API register """
-from fastapi import Depends
-from libraries.classes.input.input_api import InputAPI, input_api
-from libraries.classes.input.input_search import InputSearch, input_search
-from libraries.classes.input.input_jwt import InputJWT, input_jwt
+""" Define las clases de entrada de la API SearchTypeOperations """
+from libraries.api_manager.input.input_query_search import InputQuerySearch
+from pydantic import BaseModel
 
-
-class SearchTypeOperationsInput(InputAPI, InputSearch):
+class SearchTypeOperationsBody(BaseModel):
     pass
 
-def search_type_operations_input(
-    input_api: InputAPI = Depends(input_api),
-    input_search: InputSearch = Depends(input_search),
-    input_jwt: InputJWT = Depends(input_jwt),
-    ):
-    return SearchTypeOperationsInput.parse_obj({
-        **input_api.dict(),
-        **input_search.dict(),
-        **input_jwt.dict()
-    })
+class SearchTypeOperationsQuery(InputQuerySearch):
+    pass
+
+class SearchTypeOperationsHeader(BaseModel):
+    pass
+
+class SearchTypeOperationsPath(BaseModel):
+    pass
+
+class SearchTypeOperationsInput(
+    SearchTypeOperationsBody,
+    SearchTypeOperationsQuery,
+    SearchTypeOperationsHeader,
+    SearchTypeOperationsPath
+):
+    pass

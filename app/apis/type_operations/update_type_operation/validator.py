@@ -1,11 +1,11 @@
-""" Define las validaciones de la API Register """
-from app.apis.auth.register.input import RegisterInput
+""" Define las validaciones de la API UpdateTypeOperation """
+from .input import UpdateTypeOperationInput
 from libraries.api_manager.validator.validator_api import ValidatorAPI
 
-class RegisterValidator(ValidatorAPI):
-    """ Clase que valida la API Register """
+class UpdateTypeOperationValidator(ValidatorAPI):
+    """ Clase que valida la API UpdateTypeOperation """
 
-    def __init__(self, request:RegisterInput):
+    def __init__(self, request: UpdateTypeOperationInput):
         """ Constructor de la clase """
         super().__init__()
         self.request = request

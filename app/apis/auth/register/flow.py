@@ -1,21 +1,20 @@
-""" Define el flujo del API register """
+""" Define el flujo del API Register """
 from app.apis.auth.register.input import RegisterInput
-from app.apis.auth.register.validator import RegisterValidatorData
 from app.db.models.user import User
 from libraries.utils.crypto import hash_password
 from libraries.utils.avatar import generate_avatar_url
+from app.apis.auth.register.input import RegisterInput
+from libraries.api_manager.flow.flow_api import FlowAPI
 
-class RegisterFlow:
-    """ Clase que definir el flujo de la API register """
+class RegisterFlow(FlowAPI):
+    """ Clase que definir el flujo de la API Register """
 
     def __init__(self, request: RegisterInput):
         """ Constructor de la clase """
-        self.data: RegisterValidatorData
         self.request = request
-        self.db = None
 
     def execute(self):
-        """ Función que ejecuta el flujo de la API register """
+        """ Función que ejecuta el flujo de la API Register """
         self.register_user()
         self.db.commit()
         return self.user.as_dict()

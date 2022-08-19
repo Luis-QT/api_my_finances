@@ -1,21 +1,19 @@
 """ Define el flujo del API SearchTypeOperations """
 import math
 from app.apis.type_operations.search_type_operations.input import SearchTypeOperationsInput
-from app.apis.type_operations.search_type_operations.validator import SearchTypeOperationsValidatorData
 from app.db.models import TypeOperation
 from libraries.utils.paginator import paginate
+from libraries.api_manager.flow.flow_api import FlowAPI
 
-class SearchTypeOperationsFlow:
+class SearchTypeOperationsFlow(FlowAPI):
     """ Clase que definir el flujo de la API SearchTypeOperations """
 
     def __init__(self, request: SearchTypeOperationsInput):
         """ Constructor de la clase """
-        self.data: SearchTypeOperationsValidatorData
         self.request = request
-        self.db = None
 
     def execute(self):
-        """ Función que ejecuta el flujo de la API register """
+        """ Función que ejecuta el flujo de la API SearchTypeOperations """
         self.search_type_operations()
         self.prepare_response()
         return {

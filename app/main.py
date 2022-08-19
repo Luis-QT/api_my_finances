@@ -3,9 +3,9 @@ import os
 import time
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from app.apis.auth.router import route as route_auth
-from app.apis.type_operations.router import route as route_type_operations
-from app.apis.master import router as master_router
+from app.apis.auth.group_router import route as route_auth
+from app.apis.type_operations.group_router import route as route_type_operations
+from app.apis.master.router import router as master_router
 from libraries.translator.translator import Traslator
 
 app = FastAPI(
@@ -31,7 +31,7 @@ route_auth(app)
 route_type_operations(app)
 
 if os.environ['APP_MODE'] != "production":
-    app.include_router(master_router.router, tags=["Master"])
+    app.include_router(master_router, tags=["Master"])
 
 @app.middleware("http")
 async def add_process_time_header(request: Request, call_next):
