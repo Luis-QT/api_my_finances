@@ -3,13 +3,15 @@ from fastapi import APIRouter, Depends
 from requests import Session
 
 from app.apis.type_operations.search_type_operations.output import SearchTypeOperationsOutput
+from libraries.utils.auth_bearer import JWTBearer
 from .module import SearchTypeOperationsModule
 from .input import SearchTypeOperationsHeader, SearchTypeOperationsPath, SearchTypeOperationsQuery, SearchTypeOperationsInput
 from app.connections.database import get_db
 
-router = APIRouter()
+API_MODULE = "TypeOperation"
+router = APIRouter(tags=[API_MODULE], dependencies=[Depends(JWTBearer())])
 
-@router.get("/api/type_operations/", response_model=SearchTypeOperationsOutput)
+@router.get("/api/type_operations", response_model=SearchTypeOperationsOutput)
 def api_search_type_operations(
     path: SearchTypeOperationsPath = Depends(),
     header: SearchTypeOperationsHeader = Depends(),

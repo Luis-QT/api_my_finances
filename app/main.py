@@ -3,8 +3,7 @@ import os
 import time
 from fastapi import FastAPI, Request
 from fastapi.middleware.cors import CORSMiddleware
-from app.apis.auth.group_router import route as route_auth
-from app.apis.type_operations.group_router import route as route_type_operations
+from app.apis.routes import route as route_apis
 from app.apis.master.router import router as master_router
 from libraries.translator.translator import Traslator
 
@@ -27,8 +26,7 @@ app.add_middleware(
 )
 
 Traslator.load_translations()
-route_auth(app)
-route_type_operations(app)
+route_apis(app)
 
 if os.environ['APP_MODE'] != "production":
     app.include_router(master_router, tags=["Master"])

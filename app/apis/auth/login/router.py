@@ -7,9 +7,9 @@ from .module import LoginModule
 from .input import LoginBody, LoginHeader, LoginPath, LoginQuery, LoginInput
 
 API_MODULE = "Auth"
-router = APIRouter(prefix="/api/auth")
+router = APIRouter(tags=[API_MODULE])
 
-@router.post("/login", response_model=TokenBase)
+@router.post("/api/auth/login", response_model=TokenBase)
 def api_login(
     path: LoginPath = Depends(),
     header: LoginHeader = Depends(),

@@ -7,9 +7,9 @@ from .module import RegisterModule
 from .input import RegisterBody, RegisterHeader, RegisterPath, RegisterQuery, RegisterInput
 
 API_MODULE = "Auth"
-router = APIRouter(prefix="/api/auth")
+router = APIRouter(tags=[API_MODULE])
 
-@router.post("/register", response_model=UserBase)
+@router.post("/apis/auth/register", response_model=UserBase)
 def api_register(
     path: RegisterPath = Depends(),
     header: RegisterHeader = Depends(),
