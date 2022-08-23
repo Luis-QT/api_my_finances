@@ -11,6 +11,8 @@ class SearchTypeOperationsModule(ModuleAPI):
     def __init__(self, request, db):
         """ Constructor de la clase """
         super().__init__()
-        self.validator_api = SearchTypeOperationsValidator(request)
-        self.flow_api = SearchTypeOperationsFlow(request)
+        self.request = request
+        self.validator_api = SearchTypeOperationsValidator()
+        self.flow_api = SearchTypeOperationsFlow()
+        self.is_searchable_api = False
         self.db = db

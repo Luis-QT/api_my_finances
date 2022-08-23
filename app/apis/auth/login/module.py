@@ -9,6 +9,8 @@ class LoginModule(ModuleAPI):
     def __init__(self, request, db):
         """ Constructor de la clase """
         super().__init__()
-        self.validator_api = LoginValidator(request)
-        self.flow_api = LoginFlow(request)
+        self.request = request
+        self.validator_api = LoginValidator()
+        self.flow_api = LoginFlow()
+        self.is_searchable_api = False
         self.db = db

@@ -8,9 +8,9 @@ from libraries.api_manager.flow.flow_api import FlowAPI
 class SearchTypeOperationsFlow(FlowAPI):
     """ Clase que definir el flujo de la API SearchTypeOperations """
 
-    def __init__(self, request: SearchTypeOperationsInput):
+    def __init__(self):
         """ Constructor de la clase """
-        self.request = request
+        self.request:SearchTypeOperationsInput
 
     def execute(self):
         """ Función que ejecuta el flujo de la API SearchTypeOperations """

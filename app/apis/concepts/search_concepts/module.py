@@ -1,6 +1,7 @@
 """ Define el modulo de la API SearchConcepts """
 from app.apis.concepts.search_concepts.flow import SearchConceptsFlow
 from .validator import SearchConceptsValidator
+from .response import SearchConceptsResponse
 from libraries.api_manager.module.module_api import ModuleAPI
 
 class SearchConceptsModule(ModuleAPI):
@@ -9,6 +10,9 @@ class SearchConceptsModule(ModuleAPI):
     def __init__(self, request, db):
         """ Constructor de la clase """
         super().__init__()
-        self.validator_api = SearchConceptsValidator(request)
-        self.flow_api = SearchConceptsFlow(request)
+        self.request = request
+        self.validator_api = SearchConceptsValidator()
+        self.flow_api = SearchConceptsFlow()
+        self.response_api = SearchConceptsResponse()
+        self.is_searchable_api = True
         self.db = db

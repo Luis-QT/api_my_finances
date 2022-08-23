@@ -6,10 +6,10 @@ from libraries.api_manager.validator.validator_api import ValidatorAPI
 class UpdateConceptValidator(ValidatorAPI):
     """ Clase que valida la API UpdateConcept """
 
-    def __init__(self, request: UpdateConceptInput):
+    def __init__(self):
         """ Constructor de la clase """
         super().__init__()
-        self.request = request
+        self.request:UpdateConceptInput
 
     def validate(self):
         """ Función que ejecuta las validaciones de la API """

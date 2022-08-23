@@ -9,6 +9,8 @@ class UpdateConceptModule(ModuleAPI):
     def __init__(self, request, db):
         """ Constructor de la clase """
         super().__init__()
-        self.validator_api = UpdateConceptValidator(request)
-        self.flow_api = UpdateConceptFlow(request)
+        self.request = request
+        self.validator_api = UpdateConceptValidator()
+        self.flow_api = UpdateConceptFlow()
+        self.is_searchable_api = False
         self.db = db

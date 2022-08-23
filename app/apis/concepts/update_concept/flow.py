@@ -6,9 +6,9 @@ from libraries.api_manager.flow.flow_api import FlowAPI
 class UpdateConceptFlow(FlowAPI):
     """ Clase que definir el flujo de la API UpdateConcept """
 
-    def __init__(self, request: UpdateConceptInput):
+    def __init__(self):
         """ Constructor de la clase """
-        self.request = request
+        self.request:UpdateConceptInput
 
     def execute(self):
         """ Función que ejecuta el flujo de la API register """

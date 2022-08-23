@@ -9,6 +9,8 @@ class StoreConceptModule(ModuleAPI):
     def __init__(self, request, db):
         """ Constructor de la clase """
         super().__init__()
-        self.validator_api = StoreConceptValidator(request)
-        self.flow_api = StoreConceptFlow(request)
+        self.request = request
+        self.validator_api = StoreConceptValidator()
+        self.flow_api = StoreConceptFlow()
+        self.is_searchable_api = False
         self.db = db

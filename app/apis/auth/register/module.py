@@ -11,6 +11,8 @@ class RegisterModule(ModuleAPI):
     def __init__(self, request, db):
         """ Constructor de la clase """
         super().__init__()
-        self.validator_api = RegisterValidator(request)
-        self.flow_api = RegisterFlow(request)
+        self.request = request
+        self.validator_api = RegisterValidator()
+        self.flow_api = RegisterFlow()
+        self.is_searchable_api = False
         self.db = db

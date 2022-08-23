@@ -10,6 +10,8 @@ class UpdateTypeOperationModule(ModuleAPI):
     def __init__(self, request, db):
         """ Constructor de la clase """
         super().__init__()
-        self.validator_api = UpdateTypeOperationValidator(request)
-        self.flow_api = UpdateTypeOperationFlow(request)
+        self.request = request
+        self.validator_api = UpdateTypeOperationValidator()
+        self.flow_api = UpdateTypeOperationFlow()
+        self.is_searchable_api = False
         self.db = db

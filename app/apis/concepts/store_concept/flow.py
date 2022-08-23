@@ -6,9 +6,9 @@ from libraries.api_manager.flow.flow_api import FlowAPI
 class StoreConceptFlow(FlowAPI):
     """ Clase que definir el flujo de la API StoreConcept """
 
-    def __init__(self, request: StoreConceptInput):
+    def __init__(self):
         """ Constructor de la clase """
-        self.request = request
+        self.request:StoreConceptInput
 
     def execute(self):
         """ Función que ejecuta el flujo de la API register """

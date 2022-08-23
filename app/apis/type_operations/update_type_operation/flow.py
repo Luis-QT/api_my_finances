@@ -5,9 +5,9 @@ from libraries.api_manager.flow.flow_api import FlowAPI
 class UpdateTypeOperationFlow(FlowAPI):
     """ Clase que definir el flujo de la API UpdateTypeOperation """
 
-    def __init__(self, request: UpdateTypeOperationInput):
+    def __init__(self):
         """ Constructor de la clase """
-        self.request = request
+        self.request:UpdateTypeOperationInput
 
     def execute(self):
         """ Función que ejecuta el flujo de la API register """

@@ -9,6 +9,8 @@ class DeleteConceptModule(ModuleAPI):
     def __init__(self, request, db):
         """ Constructor de la clase """
         super().__init__()
-        self.validator_api = DeleteConceptValidator(request)
-        self.flow_api = DeleteConceptFlow(request)
+        self.request = request
+        self.validator_api = DeleteConceptValidator()
+        self.flow_api = DeleteConceptFlow()
+        self.is_searchable_api = False
         self.db = db

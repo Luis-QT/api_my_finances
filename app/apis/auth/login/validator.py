@@ -9,10 +9,10 @@ from libraries.utils.crypto import verify_password
 class LoginValidator(ValidatorAPI):
     """ Clase que valida la API Login """
 
-    def __init__(self, request:LoginInput):
+    def __init__(self):
         """ Constructor de la clase """
         super().__init__()
-        self.request = request
+        self.request:LoginInput
 
     def validate(self):
         """ Función que ejecuta las validaciones de la API """

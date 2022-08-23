@@ -7,9 +7,9 @@ from libraries.api_manager.flow.flow_api import FlowAPI
 class LoginFlow(FlowAPI):
     """ Clase que definir el flujo de la API register """
 
-    def __init__(self, request: LoginInput):
+    def __init__(self):
         """ Constructor de la clase """
-        self.request = request
+        self.request:LoginInput
 
     def execute(self):
         """ Función que ejecuta el flujo de la API register """

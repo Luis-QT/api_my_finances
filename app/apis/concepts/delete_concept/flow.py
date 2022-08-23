@@ -5,9 +5,9 @@ from libraries.api_manager.flow.flow_api import FlowAPI
 class DeleteConceptFlow(FlowAPI):
     """ Clase que definir el flujo de la API DeleteConcept """
 
-    def __init__(self, request: DeleteConceptInput):
+    def __init__(self):
         """ Constructor de la clase """
-        self.request = request
+        self.request:DeleteConceptInput
 
     def execute(self):
         """ Función que ejecuta el flujo de la API register """

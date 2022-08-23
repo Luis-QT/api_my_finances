@@ -6,10 +6,10 @@ from libraries.api_manager.validator.validator_api import ValidatorAPI
 class StoreConceptValidator(ValidatorAPI):
     """ Clase que valida la API StoreConcept """
 
-    def __init__(self, request: StoreConceptInput):
+    def __init__(self):
         """ Constructor de la clase """
         super().__init__()
-        self.request = request
+        self.request:StoreConceptInput
 
     def validate(self):
         """ Función que ejecuta las validaciones de la API """
