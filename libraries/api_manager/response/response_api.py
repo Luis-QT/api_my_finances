@@ -1,22 +1,29 @@
-
+""" Define parent class for all API responses """
 from libraries.api_manager.response.handler_response import HandlerResponse
 
-class ResponseAPI():
-	'''Parent class for response API'''
-	def __init__(self):
-		self.value = None
-		self.handler = None
+class ResponseAPI:
+    """ Parent class for all API responses """
 
-	def set_response(self):
-		pass
+    def __init__(self):
+        """ Constructor of the class """
+        self.value = None
+        self.handler = None
 
-	def set_value(self, value):
-		self.value = value
+    def set_response(self):
+        """ Interface set response """
 
-	def set_structure(self, parts):
-		self.handler = HandlerResponse(self.value)
-		self.handler.parts = parts
+    def set_value(self, value):
+        """ Set value
+        @param value: API Flow component response
+        """
+        self.value = value
 
-	def get_response(self):
-		self.set_response()
-		return self.handler.get_response()
+    def set_structure(self, parts):
+        """ Set response structure """
+        self.handler = HandlerResponse(self.value)
+        self.handler.parts = parts
+
+    def get_response(self):
+        """ Return API response """
+        self.set_response()
+        return self.handler.get_response()

@@ -1,9 +1,9 @@
 """ JWT utilities  """
 import os
 from datetime import datetime, timedelta
-from fastapi import Header
 import jwt
 from jwt import PyJWTError
+from fastapi import Header
 from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from pydantic import ValidationError

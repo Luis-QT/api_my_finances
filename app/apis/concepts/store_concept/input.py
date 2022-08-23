@@ -1,17 +1,19 @@
+""" Defines the input schema of the API StoreConcept """
 from pydantic import BaseModel
 from fastapi import Body
 
 class StoreConceptBody(BaseModel):
+    """ Body API """
     name: str = Body(..., example="Concepto de prueba")
 
 class StoreConceptQuery(BaseModel):
-    pass
+    """ Query API """
 
 class StoreConceptHeader(BaseModel):
-    pass
+    """ Header API """
 
 class StoreConceptPath(BaseModel):
-    pass
+    """ Path API """
 
 class StoreConceptInput(
     StoreConceptBody,
@@ -19,4 +21,4 @@ class StoreConceptInput(
     StoreConceptHeader,
     StoreConceptPath
 ):
-    pass
+    """ Input API """

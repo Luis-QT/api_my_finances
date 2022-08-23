@@ -1,23 +1,23 @@
-""" Define las validaciones de la API UpdateConcept """
+""" Defines the validations of the API UpdateConcept """
 from app.db.models.concept import Concept
-from .input import UpdateConceptInput
 from libraries.api_manager.validator.validator_api import ValidatorAPI
+from .input import UpdateConceptInput
 
 class UpdateConceptValidator(ValidatorAPI):
-    """ Clase que valida la API UpdateConcept """
+    """ Class that validates the input of the API """
 
     def __init__(self):
-        """ Constructor de la clase """
+        """ Constructor of the class """
         super().__init__()
         self.request:UpdateConceptInput
 
-    def validate(self):
-        """ Función que ejecuta las validaciones de la API """
+    def validate_api(self):
+        """ Function that ejecutes all the validations """
         self.val_concept_exist()
         self.val_unique_name()
-    
+
     def val_concept_exist(self):
-        """ Validar si existe el concepto """
+        """ Validate that the concept exist """
         concept = self.db.query(Concept).filter(
             Concept.id == self.request.concept_id,
             Concept.deleted == 'false'
@@ -27,7 +27,7 @@ class UpdateConceptValidator(ValidatorAPI):
         self.module_data['concept'] = concept
 
     def val_unique_name(self):
-        """ Validar que el nombre sea único """
+        """ Validate that the name is unique """
         result = self.db.query(Concept).filter(
             Concept.name.ilike(self.request.name),
             Concept.id != self.request.concept_id

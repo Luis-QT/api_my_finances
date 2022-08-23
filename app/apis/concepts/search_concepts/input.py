@@ -1,18 +1,18 @@
-""" Define las clases de entrada de la API SearchConcepts """
-from libraries.api_manager.input.input_query_search import InputQuerySearch
+""" Defines the input schema of the API SearchConcepts """
 from pydantic import BaseModel
+from libraries.api_manager.input.input_query_search import InputQuerySearch
 
 class SearchConceptsBody(BaseModel):
-    pass
+    """ Body API """
 
 class SearchConceptsQuery(InputQuerySearch):
-    pass
+    """ Query API """
 
 class SearchConceptsHeader(BaseModel):
-    pass
+    """ Header API """
 
 class SearchConceptsPath(BaseModel):
-    pass
+    """ Path API """
 
 class SearchConceptsInput(
     SearchConceptsBody,
@@ -20,4 +20,4 @@ class SearchConceptsInput(
     SearchConceptsHeader,
     SearchConceptsPath
 ):
-    pass
+    """ Input API """

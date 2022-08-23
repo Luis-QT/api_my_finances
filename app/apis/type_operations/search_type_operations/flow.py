@@ -1,43 +1,27 @@
-""" Define el flujo del API SearchTypeOperations """
-import math
+""" Defines the flow of the API SearchTypeOperations """
 from app.apis.type_operations.search_type_operations.input import SearchTypeOperationsInput
 from app.db.models import TypeOperation
 from libraries.utils.paginator import paginate
 from libraries.api_manager.flow.flow_api import FlowAPI
 
 class SearchTypeOperationsFlow(FlowAPI):
-    """ Clase que definir el flujo de la API SearchTypeOperations """
+    """ Class that defines the API flow """
 
     def __init__(self):
-        """ Constructor de la clase """
+        """ Constructor of the class """
+        super().__init__()
         self.request:SearchTypeOperationsInput
 
     def execute(self):
-        """ Función que ejecuta el flujo de la API SearchTypeOperations """
+        """ Function that ejecutes the flow """
         self.search_type_operations()
-        self.prepare_response()
-        return {
-            'items': self.array_response,
-            'total': self.total,
-            'page': self.request.page,
-            'pages': math.ceil(self.total / self.request.limit),
-            'limit': self.request.limit
-        }
+        return self.response
 
     def search_type_operations(self):
-        """ Buscar tipos de operaciones """
+        """ Search type operations """
         query = self.db.query(
             TypeOperation
         ).order_by(
             getattr(getattr(TypeOperation, self.request.sort), self.request.order)()
         )
-        self.total, self.results = paginate(query, self.request)
-
-    def prepare_response(self):
-        """ Preparar respuesta """
-        self.array_response = []
-        for type_operation in self.results:
-            response = {
-                **type_operation.as_dict(),
-            }
-            self.array_response.append(response)
+        self.total, self.response = paginate(query, self.request)

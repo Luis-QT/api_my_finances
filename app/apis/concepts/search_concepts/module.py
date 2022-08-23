@@ -1,14 +1,14 @@
-""" Define el modulo de la API SearchConcepts """
+""" Defines the module of the API SearchConcepts """
 from app.apis.concepts.search_concepts.flow import SearchConceptsFlow
+from libraries.api_manager.module.module_api import ModuleAPI
 from .validator import SearchConceptsValidator
 from .response import SearchConceptsResponse
-from libraries.api_manager.module.module_api import ModuleAPI
 
 class SearchConceptsModule(ModuleAPI):
-    """ Clase que controla los componentes de la API SearchConcepts """
+    """ Class that controls the components of the API """
 
     def __init__(self, request, db):
-        """ Constructor de la clase """
+        """ Constructor of the class """
         super().__init__()
         self.request = request
         self.validator_api = SearchConceptsValidator()

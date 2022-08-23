@@ -1,4 +1,4 @@
-""" Módulo enrutador de APIs """
+""" Defines the router funtion of the API Login """
 from fastapi import APIRouter, Depends, Body
 from app.base_schemas.token import TokenBase
 from app.connections.database import get_db
@@ -10,13 +10,14 @@ API_MODULE = "Auth"
 router = APIRouter(tags=[API_MODULE])
 
 @router.post("/api/auth/login", response_model=TokenBase)
-def api_login(
+def api_router(
     path: LoginPath = Depends(),
     header: LoginHeader = Depends(),
     body: LoginBody = Body(),
     query: LoginQuery = Depends(),
     db: Session = Depends(get_db)
     ):
+    """ Instance and run the API module """
     module =  LoginModule(LoginInput.parse_obj({
         **path.dict(),
         **header.dict(),

@@ -1,18 +1,18 @@
-""" Define el flujo del API UpdateConcept """
-from app.db.models import Concept
-from .input import UpdateConceptInput
+""" Defines the flow of the API UpdateConcept """
 from libraries.api_manager.flow.flow_api import FlowAPI
+from .input import UpdateConceptInput
 
 class UpdateConceptFlow(FlowAPI):
-    """ Clase que definir el flujo de la API UpdateConcept """
+    """ Class that defines the API flow """
 
     def __init__(self):
-        """ Constructor de la clase """
+        """ Constructor of the class """
+        super().__init__()
         self.request:UpdateConceptInput
 
     def execute(self):
-        """ Función que ejecuta el flujo de la API register """
+        """ Function that ejecutes the flow """
         concept = self.module_data['concept']
         concept.name = self.request.name
         self.db.commit()
-        return concept.as_dict()
+        return concept

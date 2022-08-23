@@ -1,24 +1,24 @@
-""" Define el flujo del API SearchConcepts """
-import math
+""" Defines the flow of the API SearchConcepts """
 from app.apis.concepts.search_concepts.input import SearchConceptsInput
 from app.db.models import Concept
 from libraries.utils.paginator import paginate
 from libraries.api_manager.flow.flow_api import FlowAPI
 
 class SearchConceptsFlow(FlowAPI):
-    """ Clase que definir el flujo de la API SearchConcepts """
+    """ Class that defines the API flow """
 
     def __init__(self):
-        """ Constructor de la clase """
+        """ Constructor of the class """
+        super().__init__()
         self.request:SearchConceptsInput
 
     def execute(self):
-        """ Función que ejecuta el flujo de la API SearchConcepts """
+        """ Function that ejecutes the flow """
         self.search_concepts()
-        return self.results
+        return self.response
 
     def search_concepts(self):
-        """ Buscar conceptos """
+        """ Search concepts """
         query = self.db.query(
             Concept
         ).filter(
@@ -27,4 +27,4 @@ class SearchConceptsFlow(FlowAPI):
         ).order_by(
             getattr(getattr(Concept, self.request.sort), self.request.order)()
         )
-        self.total, self.results = paginate(query, self.request)
+        self.total, self.response = paginate(query, self.request)

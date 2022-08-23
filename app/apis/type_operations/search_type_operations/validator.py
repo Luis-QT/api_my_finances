@@ -1,15 +1,14 @@
-""" Define las validaciones de la API SearchTypeOperations """
-from .input import SearchTypeOperationsInput
+""" Defines the validations of the API SearchTypeOperations """
 from libraries.api_manager.validator.validator_api import ValidatorAPI
+from .input import SearchTypeOperationsInput
 
 class SearchTypeOperationsValidator(ValidatorAPI):
-    """ Clase que valida la API UpdateTypeOperation """
+    """ Class that validates the input of the API """
 
     def __init__(self):
-        """ Constructor de la clase """
+        """ Constructor of the class """
         super().__init__()
         self.request:SearchTypeOperationsInput
 
-    def validate(self):
-        """ Función que ejecuta las validaciones de la API SearchTypeOperations"""
-        pass
+    def validate_api(self):
+        """ Function that ejecutes all the validations """

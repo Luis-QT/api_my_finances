@@ -1,18 +1,18 @@
-""" API Flow """
+""" Defines the flow of the API Login """
 from datetime import timedelta
 from app.apis.auth.login.input import LoginInput
 from libraries.utils import token_jwt
 from libraries.api_manager.flow.flow_api import FlowAPI
 
 class LoginFlow(FlowAPI):
-    """ Clase que definir el flujo de la API register """
+    """ Class that defines the API flow """
 
     def __init__(self):
-        """ Constructor de la clase """
+        super().__init__()
         self.request:LoginInput
 
     def execute(self):
-        """ Función que ejecuta el flujo de la API register """
+        """ Function that ejecutes the flow """
         user = self.module_data['user']
         access_token_expires = timedelta(minutes=token_jwt.ACCESS_TOKEN_EXPIRE_MINUTES)
         access_token = token_jwt.create_access_token(

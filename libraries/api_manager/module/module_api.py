@@ -1,7 +1,11 @@
+""" Define the parent class that controls all API components """
 import math
 
 class ModuleAPI:
+    """ Parent class for all API modules """
+
     def __init__(self):
+        """ Constructor of the class """
         self.request = None
         self.input_api = None
         self.validator_api = None
@@ -12,9 +16,9 @@ class ModuleAPI:
         self.is_searchable_api = False
 
     def use_api(self):
-        """ Función que ejecuta la API """
+        """ Ejecute all API components """
         self.validator_api.init_attributes(self.request, self.db, self.module_data)
-        self.validator_api.validate()
+        self.validator_api.validate_api()
         self.flow_api.init_attributes(self.request, self.db, self.module_data)
         response_flow = self.flow_api.execute()
         if self.response_api is None:

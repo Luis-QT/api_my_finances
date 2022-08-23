@@ -1,9 +1,9 @@
 """ Month model """
 from sqlalchemy import Column, String, Integer
+from sqlalchemy.orm import relationship
 from app.db.base import BasePsql
 from app.db.mixins.guid_mixin import GuidMixin
 from app.db.mixins.timestamp_mixin import TimestampMixin
-from sqlalchemy.orm import relationship
 
 class Month(BasePsql, GuidMixin, TimestampMixin):
     """ The months table """

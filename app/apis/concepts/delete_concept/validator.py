@@ -1,22 +1,22 @@
-""" Define las validaciones de la API DeleteConcept """
+""" Defines the validations of the API DeleteConcept """
 from app.db.models.concept import Concept
-from .input import DeleteConceptInput
 from libraries.api_manager.validator.validator_api import ValidatorAPI
+from .input import DeleteConceptInput
 
 class DeleteConceptValidator(ValidatorAPI):
-    """ Clase que valida la API DeleteConcept """
+    """ Class that validates the input of the API """
 
     def __init__(self):
-        """ Constructor de la clase """
+        """ Constructor of the class """
         super().__init__()
         self.request:DeleteConceptInput
 
-    def validate(self):
-        """ Función que ejecuta las validaciones de la API """
+    def validate_api(self):
+        """ Function that ejecutes all the validations """
         self.val_concept_exist()
-    
+
     def val_concept_exist(self):
-        """ Validar si existe el concepto """
+        """ Validate if the concept exist """
         concept = self.db.query(Concept).filter(
             Concept.id == self.request.concept_id,
             Concept.deleted == 'false'

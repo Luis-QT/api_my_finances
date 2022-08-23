@@ -1,23 +1,22 @@
-""" Define las validaciones de la API StoreConcept """
+""" Defines the validations of the API StoreConcept """
 from app.db.models.concept import Concept
-from .input import StoreConceptInput
 from libraries.api_manager.validator.validator_api import ValidatorAPI
+from .input import StoreConceptInput
 
 class StoreConceptValidator(ValidatorAPI):
-    """ Clase que valida la API StoreConcept """
+    """ Class that validates the input of the API """
 
     def __init__(self):
-        """ Constructor de la clase """
+        """ Constructor of the class """
         super().__init__()
         self.request:StoreConceptInput
 
-    def validate(self):
-        """ Función que ejecuta las validaciones de la API """
+    def validate_api(self):
+        """ Function that ejecutes all the validations """
         self.val_unique_name()
 
-
     def val_unique_name(self):
-        """ Validar que el nombre sea único """
+        """ Validate that the name is unique """
         result = self.db.query(Concept).filter(
             Concept.name.ilike(self.request.name),
         ).first()

@@ -1,20 +1,21 @@
-""" Define el flujo del API StoreConcept """
+""" Defines the flow of the API StoreConcept """
 from app.db.models import Concept
-from .input import StoreConceptInput
 from libraries.api_manager.flow.flow_api import FlowAPI
+from .input import StoreConceptInput
 
 class StoreConceptFlow(FlowAPI):
-    """ Clase que definir el flujo de la API StoreConcept """
+    """ Class that defines the API flow """
 
     def __init__(self):
-        """ Constructor de la clase """
+        """ Constructor of the class """
+        super().__init__()
         self.request:StoreConceptInput
 
     def execute(self):
-        """ Función que ejecuta el flujo de la API register """
+        """ Function that ejecutes the flow """
         concept = Concept(
             name=self.request.name,
         )
         self.db.add(concept)
         self.db.commit()
-        return concept.as_dict()
+        return concept

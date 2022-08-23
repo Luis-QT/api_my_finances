@@ -1,10 +1,10 @@
-from fastapi import Header
-from pydantic import BaseModel
-from fastapi import Query
+""" Define a class that has search API attributes"""
 from pydantic import validator, BaseModel
+from fastapi import Query
 from libraries.utils.exception import request_exception
 
 class InputQuerySearch(BaseModel):
+    """ Class that has search API attributes"""
     page: int = Query(
         "1",
         title="query page",

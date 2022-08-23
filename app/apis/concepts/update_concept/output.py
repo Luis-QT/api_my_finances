@@ -1,5 +1,5 @@
-""" Output Schema """
+""" Defines the output schema of the API UpdateConcept """
 from app.base_schemas import ConceptBase
 
 class UpdateConceptOutput(ConceptBase):
-    """ UpdateConceptOutput """
+    """ Output API """

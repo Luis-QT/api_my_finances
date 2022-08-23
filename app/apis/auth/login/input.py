@@ -1,20 +1,20 @@
-""" Define las clases de entrada de la API Login """
+""" Defines the input schema of the API Login """
 from fastapi import Body
-from pydantic import BaseModel
 from pydantic import BaseModel
 
 class LoginBody(BaseModel):
+    """ Body API """
     email: str = Body(..., example="admin@admin.com")
     password: str = Body(..., example="123456")
 
 class LoginQuery(BaseModel):
-    pass
+    """ Query API """
 
 class LoginHeader(BaseModel):
-    pass
+    """ Header API """
 
 class LoginPath(BaseModel):
-    pass
+    """ Path API """
 
 class LoginInput(
     LoginBody,
@@ -22,5 +22,4 @@ class LoginInput(
     LoginHeader,
     LoginPath
 ):
-    pass
-
+    """ Input API """

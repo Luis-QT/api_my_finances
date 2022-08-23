@@ -1,15 +1,14 @@
-""" Define las validaciones de la API Register """
+""" Defines the validations of the API Register """
 from app.apis.auth.register.input import RegisterInput
 from libraries.api_manager.validator.validator_api import ValidatorAPI
 
 class RegisterValidator(ValidatorAPI):
-    """ Clase que valida la API Register """
+    """ Class that validates the input of the API """
 
     def __init__(self):
-        """ Constructor de la clase """
+        """ Constructor of the class """
         super().__init__()
         self.request:RegisterInput
 
-    def validate(self):
-        """ Función que ejecuta las validaciones de la API """
-        pass
+    def validate_api(self):
+        """ Function that ejecutes all the validations """

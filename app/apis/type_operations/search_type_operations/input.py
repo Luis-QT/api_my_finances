@@ -1,18 +1,18 @@
-""" Define las clases de entrada de la API SearchTypeOperations """
-from libraries.api_manager.input.input_query_search import InputQuerySearch
+""" Defines the input schema of the API SearchTypeOperations """
 from pydantic import BaseModel
+from libraries.api_manager.input.input_query_search import InputQuerySearch
 
 class SearchTypeOperationsBody(BaseModel):
-    pass
+    """ Body API """
 
 class SearchTypeOperationsQuery(InputQuerySearch):
-    pass
+    """ Query API """
 
 class SearchTypeOperationsHeader(BaseModel):
-    pass
+    """ Header API """
 
 class SearchTypeOperationsPath(BaseModel):
-    pass
+    """ Path API """
 
 class SearchTypeOperationsInput(
     SearchTypeOperationsBody,
@@ -20,4 +20,4 @@ class SearchTypeOperationsInput(
     SearchTypeOperationsHeader,
     SearchTypeOperationsPath
 ):
-    pass
+    """ Input API """

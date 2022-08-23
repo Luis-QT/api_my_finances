@@ -1,13 +1,13 @@
-""" Define el modulo de la API Login """
+""" Defines the module of the API Login """
+from libraries.api_manager.module.module_api import ModuleAPI
 from .flow import LoginFlow
 from .validator import LoginValidator
-from libraries.api_manager.module.module_api import ModuleAPI
 
 class LoginModule(ModuleAPI):
-    """ Clase que controla los componentes de la API Login """
+    """ Class that controls the components of the API """
 
     def __init__(self, request, db):
-        """ Constructor de la clase """
+        """ Constructor of the class """
         super().__init__()
         self.request = request
         self.validator_api = LoginValidator()
